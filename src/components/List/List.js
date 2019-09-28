@@ -24,7 +24,7 @@ class List extends React.Component {
         this.setState({
             loading: true
         })
-        fetch(`${API_URL}/cryptocurrencies?page=${this.state.page}&perPage=6`)
+        fetch(`${API_URL}/cryptocurrencies?page=${this.state.page}&perPage=5`)
         .then((response) => {
             return response.json().then(data => {
                 return response.ok ? data : Promise.reject(data)
