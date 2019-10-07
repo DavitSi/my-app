@@ -3,7 +3,6 @@ import { API_URL } from '../../config';
 import Loading from '../common/Loading';
 import Table from './Table';
 import Pagination from './Pagination';
-import './List.css';
 
 class List extends React.Component {
     constructor() {
@@ -11,7 +10,6 @@ class List extends React.Component {
         this.state = {
             loading: false,
             currencies: [],
-            error: null,
             totalPages: 0,
             page: 1
         };
@@ -44,20 +42,6 @@ class List extends React.Component {
         })
     };
 
-    handleChangePercent = percent => {
-        if(percent > 0) {
-            return (
-                <span className="percent-raised">&uarr; {percent}</span>
-            )
-        } else if(percent < 0) {
-            return (
-                <span className="percent-fallen">&darr; {percent}</span>
-            )
-        } else {
-            return <span>{percent}</span>
-        }
-    }
-
     handlePaginationClick = direction => {
         let nextPage = this.state.page;
         nextPage = (direction === 'next') ? nextPage + 1 : nextPage - 1;
@@ -69,7 +53,8 @@ class List extends React.Component {
     }
 
     render() {
-        const {loading, currencies, error, totalPages, page} = this.state;
+        const {loading, currencies, totalPages, page} = this.state;
+        
 
         if(loading) {
             return (
@@ -79,10 +64,9 @@ class List extends React.Component {
             )
         }
         return (
-            <div className="Table-container">
+            <div>
                 <Table 
                    currencies={currencies}
-                   handleChangePercent={this.handleChangePercent}
                 />
                 <Pagination
                     page={page}
