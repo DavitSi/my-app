@@ -3,6 +3,7 @@ import { API_URL } from '../../config';
 import Loading from '../common/Loading';
 import Table from './Table';
 import Pagination from './Pagination';
+import { handleResponse } from '../../helpers';
 
 class List extends React.Component {
     constructor() {
@@ -23,11 +24,7 @@ class List extends React.Component {
             loading: true
         })
         fetch(`${API_URL}/cryptocurrencies?page=${this.state.page}&perPage=5`)
-        .then((response) => {
-            return response.json().then(data => {
-                return response.ok ? data : Promise.reject(data)
-            })
-        })
+        .then(handleResponse)
         .then((data) => {
             this.setState({
                 loading: false,

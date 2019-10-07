@@ -1,5 +1,5 @@
 import React from 'react';
-export const handleChangePercent = (percent) => {
+export const handleChangePercent = percent => {
     if(percent > 0) {
         return (
             <span className="percent-raised">&uarr; {percent}</span>
@@ -12,3 +12,9 @@ export const handleChangePercent = (percent) => {
         return <span>{percent}</span>
     }
 };
+
+export const handleResponse = response => {
+    return response.json().then(data => {
+        return response.ok ? data : Promise.reject(data)
+    })
+}

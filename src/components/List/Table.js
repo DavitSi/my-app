@@ -5,7 +5,6 @@ import './List.css';
 
 const Table = (props) => {
     const { currencies } = props;
-    console.log(props);
     return (
         <div className="Table-container">
             <table className="Table">
